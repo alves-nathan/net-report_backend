@@ -2,23 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Covidpp;
+use App\NetReport;
 use Illuminate\Http\Request;
 
-class CovidppController extends Controller
+class NetReportController extends Controller
 {
-
-
     const POPULACAO_PRUDENTE = 207610;
     const LETALIDADE_REAL = 0.012;
 
     public function getBaseData()
     {
-        $this->getCovidHtml();
-        return response()->json($this->getCovidHtml());
+        $this->getNetReportHtml();
+        return response()->json($this->getNetReportHtml());
     }
 
-    public function getCovidHtml(){
+    public function getNetReportHtml()
+    {
         $html="";
         try {
             $html = file_get_contents('https://www.inovaprudente.com.br/coronavirus');
@@ -34,7 +33,7 @@ class CovidppController extends Controller
         $json = json_decode($html);
         $return = array();
 
-        foreach($json as $variable){
+        foreach ($json as $variable) {
             $return[strtolower($this->stripAccents($variable->label))] = $variable->data;
         }
 
@@ -75,13 +74,9 @@ class CovidppController extends Controller
         return(($return));
     }
 
-    private function stripAccents($str){
-        return strtr(utf8_decode($str), utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ '), 'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY_');
-    }
-
-    public function showOneAuthor($id)
+    private function stripAccents($str)
     {
-        return response()->json(Author::find($id));
+        return strtr(utf8_decode($str), utf8_decode('àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ '), 'aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY_');
     }
 
     public function create(Request $request)

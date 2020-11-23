@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Covidpp extends Model
+class NetReport extends Model
 {
 
     /**
@@ -23,10 +23,12 @@ class Covidpp extends Model
      */
     protected $hidden = [];
 
-    public function getCovidHtml(){
+    public function getNetReportHtml()
+    {
         $html = file_get_contents('https://stackoverflow.com/questions/ask');
 
-        var_dump($html);die;
+        var_dump($html);
+        die;
 
         return($html);
     }

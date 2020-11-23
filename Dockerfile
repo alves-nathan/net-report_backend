@@ -30,12 +30,12 @@ RUN useradd -u 1000 -ms /bin/bash -g www www
 
 
 ENV HOME=/home/app
-COPY . $HOME/covidprudente/
+COPY . $HOME/NetReport/
 
-COPY --chown=www:www . $HOME/covidprudente/
+COPY --chown=www:www . $HOME/NetReport/
 
 USER www
-WORKDIR $HOME/covidprudente
+WORKDIR $HOME/NetReport
 
 EXPOSE 8001
 
