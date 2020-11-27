@@ -25,11 +25,16 @@ if ($handle = opendir($path)) {
                 echo("<<<<<<<<<<<<<<<<<INSIDE FOREACH 2>>>>>>>>>>>>>>>>>>".PHP_EOL);
                 var_dump($word);
                 if(!empty($word)){
+                    echo("!empty(word)".PHP_EOL);
                     if(strpos($word, ".")){
+                        echo("strpos(word, ".")".PHP_EOL);
                         $value = $word;
                     } else if ($word == 'Download' || $word == 'Upload') {
+                        echo("word == 'Download' || word == 'Upload'".PHP_EOL);
                         $type = strtolower($word);
                     }
+                    var_dump($type);
+                    var_dump($value);
                 }
                 $return .= $type.':'.$value;
             }
