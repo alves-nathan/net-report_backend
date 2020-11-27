@@ -18,7 +18,7 @@ if ($handle = opendir($path)) {
             $line = trim($line);
             var_dump($line);
             echo("<><><><><><><><><><><><><><><><><><><><><><><>".PHP_EOL);
-            if(!empty($line)){
+            if(!empty($line) && !(strpos($line, "Operadora"))){
                 var_dump($line);
                 $json_line = "values:{";
                 echo("<<<<<<<<<<<<<<<<<INSIDE FOREACH 1>>>>>>>>>>>>>>>>>>".PHP_EOL);
