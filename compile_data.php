@@ -32,6 +32,6 @@ if ($handle = opendir($path)) {
         $return .= "}";
         //unset($path.$file);
     }
-    file_put_contents("/home/pi/internet-report/data_json/report_".$today.".json");
+    file_put_contents("/home/pi/internet-report/data_json/report_".$today.".json", $return);
     closedir($handle);
 }
