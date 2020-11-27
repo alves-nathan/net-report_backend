@@ -40,8 +40,8 @@ if ($handle = opendir($path)) {
                         var_dump($value);
                     }
                 }
-            } elseif(strpos($line, "Operadora"){
-                
+            } elseif(strpos($line, "Operadora")){
+
             }
             if(!empty($type) && !empty($value)){
                 $json_line .= $type.':'.$value . ",";
