@@ -41,14 +41,12 @@ if ($handle = opendir($path)) {
                     }
                 }
             } elseif(strpos($line, "Operadora")){
-
+                $json_line .= "}";
             }
             if(!empty($type) && !empty($value)){
                 $json_line .= $type.':'.$value . ",";
             }
-            $json_line .= "}";
             var_dump($json_line);
-            $return .= $json_line ."}";
         }
         //unset($path.$file);
     }
