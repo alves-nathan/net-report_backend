@@ -9,7 +9,7 @@ if ($handle = opendir($path)) {
         $content = file_get_contents($path.$file);
         $exploded_content = explode(PHP_EOL, $content);
         $date = explode('_', $exploded_content[0]);
-        $return = "{"
+        $return = "{";
         array_splice($exploded_content, 0, 1);
         foreach($line in $exploded_content){
             var_dump(explode(" ", $line));
