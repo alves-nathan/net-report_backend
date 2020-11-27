@@ -16,6 +16,7 @@ if ($handle = opendir($path)) {
         $return .= "datetime:'".$date[1].'/'.$date[0].'/'.$date[2].' '.$date[3].':'.$date[4]."',";
         foreach($content as $line){
             if(!empty($line)){
+                var_dump($line);
                 $json_line = "values:{";
                 echo("<<<<<<<<<<<<<<<<<INSIDE FOREACH 1>>>>>>>>>>>>>>>>>>".PHP_EOL);
                 $exploded_line = explode(" ", $line);
