@@ -7,8 +7,11 @@ if ($handle = opendir($path)) {
         if ('..' === $file) continue;
 
         $content = file_get_contents($path.$file);
-        $temp = explode(PHP_EOL, $content);
-        var_dump($temp);
+        $exploded_content = explode(PHP_EOL, $content);
+        $date = explode('_', $exploded_content[0]);
+        unlink($exploded_content[0]);
+        var_dump($exploded_content);
+        var_dump($date);
     }
     closedir($handle);
 }
