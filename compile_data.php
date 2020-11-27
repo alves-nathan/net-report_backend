@@ -10,6 +10,7 @@ if ($handle = opendir($path)) {
         $exploded_content = explode(PHP_EOL, $content);
         $date = explode('_', $exploded_content[0]);
         array_splice($exploded_content, 0, 1);
+        $exploded_content = array_filter($exploded_content);
         var_dump($exploded_content);
         var_dump($date);
     }
