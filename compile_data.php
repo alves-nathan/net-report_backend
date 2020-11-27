@@ -14,13 +14,12 @@ if ($handle = opendir($path)) {
         var_dump($content);
         $return .= "report:{";
         $return .= "datetime:'".$date[1].'/'.$date[0].'/'.$date[2].' '.$date[3].':'.$date[4]."',";
+        $json_line = "values:{";
         foreach($content as $line){
             $line = trim($line);
             var_dump($line);
             echo("<><><><><><><><><><><><><><><><><><><><><><><>".PHP_EOL);
             if(!empty($line) && !(strpos($line, "Operadora"))){
-                var_dump($line);
-                $json_line = "values:{";
                 echo("<<<<<<<<<<<<<<<<<INSIDE FOREACH 1>>>>>>>>>>>>>>>>>>".PHP_EOL);
                 $exploded_line = explode(" ", $line);
                 $type = "";
@@ -40,16 +39,18 @@ if ($handle = opendir($path)) {
                         var_dump($type);
                         var_dump($value);
                     }
-                    if(!empty($type) && !empty($value)){
-                        $json_line .= $type.':'.$value . ",";
-                    }
                 }
-                $json_line .= "}";
-                var_dump($json_line);
-                $return .= $json_line ."}";
+            } elseif(strpos($line, "Operadora"){
+                
             }
-            //unset($path.$file);
+            if(!empty($type) && !empty($value)){
+                $json_line .= $type.':'.$value . ",";
+            }
+            $json_line .= "}";
+            var_dump($json_line);
+            $return .= $json_line ."}";
         }
+        //unset($path.$file);
     }
     file_put_contents("/home/pi/internet-report/data_json/report_".$today.".json", $return);
     closedir($handle);
