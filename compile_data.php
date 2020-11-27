@@ -6,7 +6,7 @@ if ($handle = opendir($path)) {
         if ('.' === $file) continue;
         if ('..' === $file) continue;
 
-        $content = file_get_contents($file)
+        $content = file_get_contents($file);
 
         var_dump($content);
     }
