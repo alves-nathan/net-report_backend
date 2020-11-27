@@ -15,7 +15,7 @@ if ($handle = opendir($path)) {
             var_dump(explode(" ", $line));
             //$return .= (!empty($line))?
         }
-        $return .= "}"
+        $return .= "}";
         //var_dump($date);
     }
     closedir($handle);
