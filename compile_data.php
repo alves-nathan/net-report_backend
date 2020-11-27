@@ -36,7 +36,9 @@ if ($handle = opendir($path)) {
                     var_dump($type);
                     var_dump($value);
                 }
-                $return .= $type.':'.$value;
+                if(!empty($type) && !empty($value)){
+                    $return .= $type.':'.$value;
+                }
             }
             $return .= "}";
         }
