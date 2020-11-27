@@ -23,7 +23,6 @@ if ($handle = opendir($path)) {
                 $value = "";
                 var_dump($exploded_line);
                 foreach ($exploded_line as $word){
-                    echo("<<<<<<<<<<<<<<<<<INSIDE FOREACH 2>>>>>>>>>>>>>>>>>>".PHP_EOL);
                     var_dump($word);
                     if(!empty($word)){
                         echo("!empty(word)".PHP_EOL);
@@ -43,9 +42,8 @@ if ($handle = opendir($path)) {
                 }
                 $json_line .= "}";
                 var_dump($json_line);
-                $return .= $json_line;
+                $return .= $json_line ."}";
             }
-            $return .= "}";
             //unset($path.$file);
         }
     }
