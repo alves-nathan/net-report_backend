@@ -10,6 +10,7 @@ if ($handle = opendir($path)) {
         $date = explode('_', $content[0]);
         $return = "{";
         array_splice($content, 0, 1);
+        var_dump($content);
         foreach($content as $line){
             $return .= "report:{";
             $return .= "datetime:'".$date[1].'/'.$date[0].'/'.$date[2].' '.$date[3].':'.$date[4]."',";
@@ -17,7 +18,9 @@ if ($handle = opendir($path)) {
             $exploded_line = explode(" ", $line);
             $type = "";
             $value = "";
+            var_dump($exploded_line);
             foreach ($exploded_line as $word){
+                var_dump($word);
                 if(!empty($word)){
                     if(strpos($word, ".")){
                         $value = $word;
