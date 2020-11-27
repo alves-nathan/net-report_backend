@@ -21,7 +21,7 @@ if ($handle = opendir($path)) {
                 if(!empty($word)){
                     if(strpos($word, ".")){
                         $value = $word;
-                    } else {
+                    } else if ($word == 'Download' || $word == 'Upload') {
                         $type = strtolower($word);
                     }
                 }
