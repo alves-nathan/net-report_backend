@@ -10,10 +10,10 @@ if ($handle = opendir($path)) {
         $date = explode('_', $content[0]);
         $return = "{";
         array_splice($content, 0, 1);
-        echo("<<<<<<<<<<<<<<<<<INSIDE WHILE>>>>>>>>>>>>>>>>>>");
+        echo("<<<<<<<<<<<<<<<<<INSIDE WHILE>>>>>>>>>>>>>>>>>>".PHP_EOL);
         var_dump($content);
         foreach($content as $line){
-            echo("<<<<<<<<<<<<<<<<<INSIDE FOREACH 1>>>>>>>>>>>>>>>>>>");
+            echo("<<<<<<<<<<<<<<<<<INSIDE FOREACH 1>>>>>>>>>>>>>>>>>>".PHP_EOL);
             $return .= "report:{";
             $return .= "datetime:'".$date[1].'/'.$date[0].'/'.$date[2].' '.$date[3].':'.$date[4]."',";
             $return .= "values:{";
@@ -22,7 +22,7 @@ if ($handle = opendir($path)) {
             $value = "";
             var_dump($exploded_line);
             foreach ($exploded_line as $word){
-                echo("<<<<<<<<<<<<<<<<<INSIDE FOREACH 2>>>>>>>>>>>>>>>>>>");
+                echo("<<<<<<<<<<<<<<<<<INSIDE FOREACH 2>>>>>>>>>>>>>>>>>>".PHP_EOL);
                 var_dump($word);
                 if(!empty($word)){
                     if(strpos($word, ".")){
