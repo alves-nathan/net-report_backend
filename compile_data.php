@@ -9,10 +9,14 @@ if ($handle = opendir($path)) {
         $content = file_get_contents($path.$file);
         $exploded_content = explode(PHP_EOL, $content);
         $date = explode('_', $exploded_content[0]);
+        $return = "{"
         array_splice($exploded_content, 0, 1);
-        $exploded_content = array_filter($exploded_content);
-        var_dump($exploded_content);
-        var_dump($date);
+        foreach($line in $exploded_content){
+            var_dump(explode(" ", $line));
+            //$return .= (!empty($line))?
+        }
+        $return .= "}"
+        //var_dump($date);
     }
     closedir($handle);
 }
