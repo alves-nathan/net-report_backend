@@ -11,7 +11,7 @@ if ($handle = opendir($path)) {
         $date = explode('_', $exploded_content[0]);
         $return = "{";
         array_splice($exploded_content, 0, 1);
-        foreach($line in $exploded_content){
+        foreach($line as $exploded_content){
             var_dump(explode(" ", $line));
             //$return .= (!empty($line))?
         }
