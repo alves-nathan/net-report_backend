@@ -7,8 +7,8 @@ if ($handle = opendir($path)) {
         if ('..' === $file) continue;
 
         $content = file_get_contents($path.$file);
-
-        var_dump($content);
+        $temp = explode($content, PHP_EOL);
+        var_dump($temp);
     }
     closedir($handle);
 }
