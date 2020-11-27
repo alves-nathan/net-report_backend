@@ -16,7 +16,7 @@ if ($handle = opendir($path)) {
             echo("<<<<<<<<<<<<<<<<<INSIDE FOREACH 1>>>>>>>>>>>>>>>>>>".PHP_EOL);
             $return .= "report:{";
             $return .= "datetime:'".$date[1].'/'.$date[0].'/'.$date[2].' '.$date[3].':'.$date[4]."',";
-            $return .= "values:{";
+            $json_line = "values:{";
             $exploded_line = explode(" ", $line);
             $type = "";
             $value = "";
@@ -37,10 +37,12 @@ if ($handle = opendir($path)) {
                     var_dump($value);
                 }
                 if(!empty($type) && !empty($value)){
-                    $return .= $type.':'.$value;
+                    $json_line .= $type.':'.$value . ",";
                 }
             }
-            $return .= "}";
+            $json_line .= "}";
+            var_dump($json_line);
+            $return .= $json_line;
         }
         $return .= "}";
         //unset($path.$file);
