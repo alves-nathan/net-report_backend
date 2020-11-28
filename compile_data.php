@@ -6,6 +6,7 @@ if ($handle = opendir($path)) {
     while (false !== ($file = readdir($handle))) {
         if ('.' === $file) continue;
         if ('..' === $file) continue;
+        var_dump($path.$file);
         $content = explode(PHP_EOL, file_get_contents($path.$file));
         $date = explode('_', $content[0]);
         $return = "{";
