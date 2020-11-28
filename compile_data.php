@@ -40,7 +40,9 @@ if ($handle = opendir($path)) {
         //unset($path.$file);
         $i++;
     }
-
+    usort($return, function ($item1, $item2) {
+        return $item1['report']['datetime'] <=> $item2['report']['datetime'];
+    });
     var_dump($return);
     //file_put_contents("/home/pi/internet-report/data_json/report_".$today.".json", json_encode($return));
 }
