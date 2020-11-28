@@ -42,6 +42,8 @@ if ($handle = opendir($path)) {
                 }
             } elseif(strpos($line, "Operadora")){
                 $json_line .= "}";
+                $value = "";
+                $type = "";
             }
             if(!empty($type) && !empty($value)){
                 $json_line .= $type.':'.$value . ",";
