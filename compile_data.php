@@ -37,7 +37,7 @@ if ($handle = opendir($path)) {
             }
         }
         $return[$i]["report"]["values"] = $json_line;
-        unset($path.$file);
+        unlink($path.$file);
         $i++;
     }
     usort($return, function ($item1, $item2) {
