@@ -45,9 +45,7 @@ if ($handle = opendir($path)) {
                 $value = "";
                 $type = "";
             }
-            if(!empty($type) && !empty($value)){
-                $json_line .= $type.':'.$value . ",";
-            }
+            $json_line .= $type.':'.$value . ",";
             var_dump($json_line);
         }
         //unset($path.$file);
