@@ -1,7 +1,6 @@
 <?php
 $path = "/home/pi/internet-report/data/";
-//$return = "";
-$return = array();
+$return = [];
 $today = date('d-m-Y');
 $i = 0;
 if ($handle = opendir($path)) {
@@ -10,13 +9,9 @@ if ($handle = opendir($path)) {
         if ('..' === $file) continue;
         $content = explode(PHP_EOL, file_get_contents($path.$file));
         $date = explode('_', $content[0]);
-        //$return .= "{";
-            array_splice($content, 0, 1);
-        //$return .= "report:{";
+        array_splice($content, 0, 1);
         $return[$i]["report"] = [];
-        //$return .= "datetime:'".$date[1].'/'.$date[0].'/'.$date[2].' '.$date[3].':'.$date[4]."',";
         $return[$i]["report"]["datetime"] = $date[1].'/'.$date[0].'/'.$date[2].' '.$date[3].':'.$date[4];
-        //$json_line = "values:{";
         $json_line = [];
         foreach($content as $line){
             $line = trim($line);
@@ -34,24 +29,19 @@ if ($handle = opendir($path)) {
                     }
                 }
             } elseif(strpos($line, "Operadora")){
-                //$json_line = rtrim($json_line, ',');
-                //$json_line .= "}";
                 $value = "";
                 $type = "";
             }
             if(!empty($type) && !empty($value)){
                 $json_line[$type] = $value;
-                //$json_line .= $type.':'.$value . ",";
             }
         }
-        //$return .= $json_line;
         $return[$i]["report"]["values"] = $json_line;
-        //$return .= "}";
         //unset($path.$file);
         $i++;
     }
-    $temp = json_encode($return);
-    var_dump($temp);
-    //file_put_contents("/home/pi/internet-report/data_json/report_".$today.".json", $return);
+
+    var_dump($return);
+    //file_put_contents("/home/pi/internet-report/data_json/report_".$today.".json", json_encode($return));
 }
 closedir($handle);
