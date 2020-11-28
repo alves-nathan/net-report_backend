@@ -48,6 +48,8 @@ if ($handle = opendir($path)) {
             $json_line .= $type.':'.$value . ",";
             var_dump($json_line);
         }
+        $return .= $json_line;
+        $return .= "}";
         //unset($path.$file);
     }
     file_put_contents("/home/pi/internet-report/data_json/report_".$today.".json", $return);
