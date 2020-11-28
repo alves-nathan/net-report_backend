@@ -38,7 +38,9 @@ if ($handle = opendir($path)) {
             }
             var_dump($type);
             var_dump($value);
-            $json_line .= $type.':'.$value . ",";
+            if(!empty($type) && !empty($value)){
+                $json_line .= $type.':'.$value . ",";
+            }
             var_dump($json_line);
         }
         $return .= $json_line;
