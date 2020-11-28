@@ -6,7 +6,6 @@ if ($handle = opendir($path)) {
     while (false !== ($file = readdir($handle))) {
         if ('.' === $file) continue;
         if ('..' === $file) continue;
-        var_dump($path.$file);
         $content = explode(PHP_EOL, file_get_contents($path.$file));
         $date = explode('_', $content[0]);
         $return .= "{";
@@ -43,6 +42,8 @@ if ($handle = opendir($path)) {
         $return .= "}";
         //unset($path.$file);
     }
+    $temp = json_decode($return);
+    var_dump($temp);
     file_put_contents("/home/pi/internet-report/data_json/report_".$today.".json", $return);
 }
 closedir($handle);
