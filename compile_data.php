@@ -32,6 +32,7 @@ if ($handle = opendir($path)) {
                     }
                 }
             } elseif(strpos($line, "Operadora")){
+                $json_line = rtrim($json_line, ',');
                 $json_line .= "}";
                 $value = "";
                 $type = "";
