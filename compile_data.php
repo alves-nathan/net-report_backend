@@ -9,7 +9,7 @@ if ($handle = opendir($path)) {
         var_dump($path.$file);
         $content = explode(PHP_EOL, file_get_contents($path.$file));
         $date = explode('_', $content[0]);
-        $return = "{";
+        $return .= "{";
         array_splice($content, 0, 1);
         $return .= "report:{";
         $return .= "datetime:'".$date[1].'/'.$date[0].'/'.$date[2].' '.$date[3].':'.$date[4]."',";
