@@ -21,12 +21,9 @@ if ($handle = opendir($path)) {
                 $value = "";
                 foreach ($exploded_line as $word){
                     if(!empty($word)){
-                        echo("!empty(word)".PHP_EOL);
                         if(strpos($word, ".")){
-                            echo("strpos(word, ".")".PHP_EOL);
                             $value = $word;
                         } else if ($word == 'Download' || $word == 'Upload') {
-                            echo("word == 'Download' || word == 'Upload'".PHP_EOL);
                             $type = strtolower($word);
                         }
                     }
@@ -37,17 +34,14 @@ if ($handle = opendir($path)) {
                 $value = "";
                 $type = "";
             }
-            var_dump($type);
-            var_dump($value);
             if(!empty($type) && !empty($value)){
                 $json_line .= $type.':'.$value . ",";
             }
-            var_dump($json_line);
         }
         $return .= $json_line;
         $return .= "}";
         //unset($path.$file);
     }
     file_put_contents("/home/pi/internet-report/data_json/report_".$today.".json", $return);
-    closedir($handle);
 }
+closedir($handle);
